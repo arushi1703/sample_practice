@@ -17,7 +17,7 @@ class _UserFormState extends State<UserForm> {
   void storeData() async{
     final SharedPreferences pref= await SharedPreferences.getInstance();
     await pref.setString('firstname',firstnamecon.text);
-    await pref.setString('lastname',firstnamecon.text);
+    await pref.setString('lastname',lastnamecon.text);
   }
 
   @override
@@ -30,13 +30,16 @@ class _UserFormState extends State<UserForm> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Enter first name:'),
-                TextFormField(
-                  controller: firstnamecon,
-                  decoration: InputDecoration(
-                    hintText: 'Ada',
+                SizedBox(
+                  width:300,
+                  child: TextFormField(
+                    controller: firstnamecon,
+                    decoration: InputDecoration(
+                      hintText: 'Ada',
+                    ),
                   ),
                 ),
               ],
@@ -47,10 +50,13 @@ class _UserFormState extends State<UserForm> {
               children: [
                 Text('Enter last name:'),
                 SizedBox(height:20),
-                TextFormField(
-                  controller: lastnamecon,
-                  decoration: InputDecoration(
-                    hintText: 'Lovelace',
+                SizedBox(
+                  width:300,
+                  child: TextFormField(
+                    controller: lastnamecon,
+                    decoration: InputDecoration(
+                      hintText: 'Lovelace',
+                    ),
                   ),
                 ),
               ],

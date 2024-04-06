@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'calculator.dart';
 import 'product.dart';
 import 'auth_service.dart';
 import 'userForm.dart';
@@ -53,6 +54,15 @@ class _HomeState extends State<Home> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context)=>UserForm()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Calculator'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context)=>Calculator()),
                 );
               },
             ),
