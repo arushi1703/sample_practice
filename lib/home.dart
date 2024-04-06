@@ -75,45 +75,60 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
-      body: Column(
-        children:[
-          StreamBuilder<DocumentSnapshot>(
-          stream:FirebaseFirestore.instance.collection("users").doc("Urja").snapshots(),
-          builder: (context,snapshot){
-            if(snapshot.hasData){
-              final userData=snapshot.data!.data() as Map<String, dynamic>;
-              return Column(
-                children: [
-                  Text(userData["name"]),
-                  SizedBox(height:30),
-                  Text(userData["age"].toString()),
-                  SizedBox(height:30),
-                  Text(userData["email"]),
-                  SizedBox(height:30),
-                  Text(userData["password"]),
-                  SizedBox(height:30),
-                ],
-              );
+      body: Center(
+        child: Column(
+          children:[
+            StreamBuilder<DocumentSnapshot>(
+            stream:FirebaseFirestore.instance.collection("users").doc("Urja").snapshots(),
+            builder: (context,snapshot){
+              if(snapshot.hasData){
+                final userData=snapshot.data!.data() as Map<String, dynamic>;
+                return Column(
+                  children: [
+                    Text(userData["name"]),
+                    SizedBox(height:30),
+                    Text(userData["age"].toString()),
+                    SizedBox(height:30),
+                    Text(userData["email"]),
+                    SizedBox(height:30),
+                    Text(userData["password"]),
+                    SizedBox(height:30),
+                  ],
+                );
+              }
+              else if(snapshot.hasError){
+                return Text('Error');
+              }
+              else{
+                return CircularProgressIndicator();
+              }
             }
-            else if(snapshot.hasError){
-              return Text('Error');
-            }
-            else{
-              return CircularProgressIndicator();
-            }
-          }
-        ),
-          SizedBox(
-            width:300,
-            child: TextField(
-              controller: textdata,
-            ),
           ),
-          ElevatedButton(
-              onPressed: (){ retrieveData();},
-              child: Text('Retrieve'),
-          )
-        ],
+            SizedBox(
+              width:300,
+              child: TextField(
+                controller: textdata,
+              ),
+            ),
+            ElevatedButton(
+                onPressed: (){ retrieveData();},
+                child: Text('Retrieve'),
+            ),
+            SizedBox(height:30),
+            Container(
+              width:300,
+              height:150,
+              child: Image.network('https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630')
+              ),
+            /*Container(
+                width:300,
+                height:150,
+                child: Image(
+                  image: AssetImage('images/flower.jpg'),
+                ),
+            ),*/
+          ],
+        ),
       ),
     );
   }
