@@ -15,9 +15,9 @@ class ProductDetails extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children:[
-            Text('${product.name}'),
+            Text(product.name),
             SizedBox(height:30),
-            Text('${product.description}')
+            Text(product.description)
           ],
         ),
       ),

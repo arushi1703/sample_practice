@@ -18,7 +18,7 @@ class _HomeState extends State<Home> {
 
   final authservice= AuthService();
 
-
+  final _firestore= FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +79,7 @@ class _HomeState extends State<Home> {
         child: Column(
           children:[
             StreamBuilder<DocumentSnapshot>(
-            stream:FirebaseFirestore.instance.collection("users").doc("Urja").snapshots(),
+            stream:_firestore.collection("users").doc("Urja").snapshots(),
             builder: (context,snapshot){
               if(snapshot.hasData){
                 final userData=snapshot.data!.data() as Map<String, dynamic>;
